@@ -38,3 +38,6 @@ jobs:
   
   #check-status:
     # needs to be a while loop, keeps checking until status is either success or error. Depending on this should output error
+branding:
+  icon: activity
+  color: green
