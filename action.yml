@@ -14,12 +14,27 @@ inputs:
   REPO_NAME:
     description: "Repository name"
     required: true
+  TEST_FOLDER:
+     description: "Folder to run pytest on"
+     required: true
+     default: "integration/"
 outputs:
   automatic_releases_tag:
     description: "The release tag this action just processed"
   upload_url:
     description: "The URL for uploading additional assets to the release"
-runs:
+jobs:
+  authenticate-kaggle-cli:
+    echo $GIT_ACCESS_TOKEN
+    # authenticate kaggle cli
+  #send-job:
+    # use kaggle cli to send the tests
+    # sends a job to Kaggle. I.e. this should create the files, send them
+  
+  #check-status:
+    # needs to be a while loop, keeps checking until status is either success or error. Depending on this should output error
+  
+  
   using: "node12"
   main: "dist/index.js"
 branding:
