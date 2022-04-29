@@ -27,6 +27,10 @@ jobs:
     authenticate-kaggle-cli:
       run: |
         echo $GIT_ACCESS_TOKEN
+        echo $KAGGLE_API_KEY
+        echo $REPO_URL
+        echo $REPO_NAME
+        echo $TEST_FOLDER
     # authenticate kaggle cli
   #send-job:
     # use kaggle cli to send the tests
