@@ -29,7 +29,9 @@ runs:
   - name: authenticate-kaggle-cli
     shell: bash
     run:  |
-      echo "Hello World"
+      echo $REPO_URL
+      echo $REPO_NAME
+    #  echo "Hello World"
     # echo $KAGGLE_API_KEY
     # echo $REPO_URL
     # echo $REPO_NAME
