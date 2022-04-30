@@ -30,7 +30,7 @@ runs:
     run: |
       cd ~
       mkdir .kaggle
-      python -m pip install --upgrade --force-reinstall --no-deps kaggle --user
+      python -m pip install --upgrade kaggle --user
       python -c "import json, os; kaggle_api_key = os.environ.get('KAGGLE_API_KEY'); kaggle_json = json.loads(kaggle_api_key);\
       
       with open('.kaggle/kaggle.json', 'w') as f:
