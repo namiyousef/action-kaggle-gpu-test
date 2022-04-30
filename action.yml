@@ -44,8 +44,8 @@ runs:
       
   - name: check job status
     shell: bash
-      run: |
-        echo "test"
+    run: |
+      echo "test"
     #ls
       
     # authenticate kaggle cli
