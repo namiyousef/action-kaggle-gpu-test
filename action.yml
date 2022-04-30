@@ -29,11 +29,11 @@ runs:
   - name: authenticate-kaggle-cli
     shell: bash
     run:  |
-      echo $GIT_ACCESS_TOKEN
-      echo $KAGGLE_API_KEY
-      echo $REPO_URL
-      echo $REPO_NAME
-      echo $TEST_FOLDER
+      echo "Hello World"
+    # echo $KAGGLE_API_KEY
+    # echo $REPO_URL
+    # echo $REPO_NAME
+    # echo $TEST_FOLDER
         
     # authenticate kaggle cli
   #send-job:
