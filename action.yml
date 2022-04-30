@@ -29,6 +29,7 @@ runs:
       KAGGLE_API_KEY: ${{ inputs.kaggle_api_key }}
     run: |
       python -m pip install kaggle
+      python -c "print('reas')"
       python
       import json, os
       kaggle_api_key = os.environ.get("KAGGLE_API_KEY")
