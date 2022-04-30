@@ -41,9 +41,9 @@ runs:
       KAGGLE_API_KEY: ${{ inputs.kaggle_api_key }}
       TEST_FOLDER: ${{ inputs.test_folder }}
     run: |
-      
-      echo ${test_folder}
-      echo ${repository_name}
+      env
+      echo ${TEST_FOLDER}
+      echo ${REPO_NAME}
       git clone https://${GIT_ACCESS_TOKEN}@github.com/${REPO_NAME}.git
       export REPO="$(cut -d'/' -f2 <<<"$REPO_NAME")"
       cd $REPO
