@@ -2,19 +2,19 @@ name: "Kaggle GPU Test"
 author: "namiyousef"
 description: "Automatically test integration/gpu tests against Kaggle notebook with GPU runtime"
 inputs:
-  GIT_ACCESS_TOKEN:
+  git_access_token:
     description: "GitHub secret token with read permissions"
     required: true
-  KAGGLE_API_KEY:
+  kaggle_api_key:
     description: "Kaggle API key for pushing tests"
     required: true
-  REPO_URL:
+  repo_url:
     description: "Public repository URL"
     required: true
-  REPO_NAME:
+  repo_name:
     description: "Repository name"
     required: true
-  TEST_FOLDER:
+  test_folder:
      description: "Folder to run pytest on"
      required: true
      default: "integration/"
@@ -39,7 +39,7 @@ runs:
   - name: test clone repo
     shell: bash
     run: |
-      git clone https://${GIT_ACCESS_TOKEN}@github.com/namiyousef/colab-utils.git
+      git clone https://${git_access_token}@github.com/namiyousef/colab-utils.git
     # authenticate kaggle cli
   #send-job:
     # use kaggle cli to send the tests
