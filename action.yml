@@ -30,12 +30,13 @@ runs:
     run: |
       cd ~
       mkdir .kaggle
-      python -m pip install kaggle
+      python -m pip install --upgrade --force-reinstall --no-deps kaggle --user
       python -c "import json, os; kaggle_api_key = os.environ.get('KAGGLE_API_KEY'); kaggle_json = json.loads(kaggle_api_key);\
       
       with open('.kaggle/kaggle.json', 'w') as f:
         json.dump(kaggle_json, f)
       "
+      kaggle
       kaggle competitions list
     # todo here needs to create the json and store it in .kaggle/
   - name: send tests
