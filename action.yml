@@ -35,13 +35,18 @@ runs:
     # echo $TEST_FOLDER
   - name: test clone repo
     shell: bash
+    env:
+      REPO_NAME: ${{ inputs.repository_name }}
+      GIT_ACCESS_TOKEN: ${{ inputs.git_access_token }}
+      KAGGLE_API_KEY: ${{ inputs.kaggle_api_key }}
+      TEST_FOLDER: ${{ inputs.test_folder }}
     run: |
-      env
-    #echo ${test_folder}
-    #echo ${repository_name}
-    #git clone https://${git_access_token}@github.com/namiyousef/colab-utils.git
-    #export repo_name="$(cut -d'/' -f2 <<<"$repository_name")"
-    #cd $repo_name
+      
+      echo ${test_folder}
+      echo ${repository_name}
+      git clone https://${GIT_ACCESS_TOKEN}@github.com/${REPO_NAME}.git
+      export REPO="$(cut -d'/' -f2 <<<"$REPO_NAME")"
+      cd $REPO
     #ls
       
     # authenticate kaggle cli
