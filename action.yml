@@ -26,17 +26,20 @@ outputs:
 runs:
   using: "composite"
   steps:
-  - name: authenticate-kaggle-cli
-    shell: bash
-    run:  |
-      echo $REPO_URL
-      echo $REPO_NAME
+  #- name: authenticate-kaggle-cli
+  #  shell: bash
+  #  run:  |
+  #    echo $REPO_URL
+  #    echo $REPO_NAME
     #  echo "Hello World"
     # echo $KAGGLE_API_KEY
     # echo $REPO_URL
     # echo $REPO_NAME
     # echo $TEST_FOLDER
-        
+  - name: test clone repo
+    shell: bash
+    run: |
+      git clone https://github.com/namiyousef/colab-utils.git
     # authenticate kaggle cli
   #send-job:
     # use kaggle cli to send the tests
