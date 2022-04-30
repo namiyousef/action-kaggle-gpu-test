@@ -40,6 +40,9 @@ runs:
     shell: bash
     run: |
       git clone https://${git_access_token}@github.com/namiyousef/colab-utils.git
+      ls colab-utils
+      echo $repo_url
+      echo $repo_name
     # authenticate kaggle cli
   #send-job:
     # use kaggle cli to send the tests
