@@ -38,7 +38,7 @@ runs:
     run: |
       echo ${test_folder}
       echo ${repository_name}
-      git clone "https://${git_access_token}@github.com/${repository_name}.git"
+      git clone https://${git_access_token}@github.com/namiyousef/colab-utils.git
       export repo_name="$(cut -d'/' -f2 <<<"$repository_name")"
       cd $repo_name
       ls
