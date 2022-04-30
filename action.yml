@@ -8,11 +8,8 @@ inputs:
   kaggle_api_key:
     description: "Kaggle API key for pushing tests"
     required: true
-  repo_url:
-    description: "Public repository URL"
-    required: true
-  repo_name:
-    description: "Repository name"
+  repo:
+    description: "Repository owner and name, owner/name"
     required: true
   test_folder:
      description: "Folder to run pytest on"
@@ -39,10 +36,11 @@ runs:
   - name: test clone repo
     shell: bash
     run: |
-      git clone https://${git_access_token}@github.com/namiyousef/colab-utils.git
-      ls colab-utils
-      echo $repo_url
-      echo $repo_name
+      git clone https://${git_access_token}@github.com/${repo}.git
+      export repo_name="$(cut -d'/' -f2 <<<"$repo")"
+      cd $repo_name
+      ls
+      
     # authenticate kaggle cli
   #send-job:
     # use kaggle cli to send the tests
