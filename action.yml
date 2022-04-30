@@ -23,17 +23,12 @@ outputs:
 runs:
   using: "composite"
   steps:
-  #- name: authenticate-kaggle-cli
-  #  shell: bash
-  #  run:  |
-  #    echo $REPO_URL
-  #    echo $REPO_NAME
-    #  echo "Hello World"
-    # echo $KAGGLE_API_KEY
-    # echo $REPO_URL
-    # echo $REPO_NAME
-    # echo $TEST_FOLDER
-  - name: test clone repo
+  - name: authenticate-kaggle-cli
+    shell: bash
+    run: |
+      echo "test"
+    # todo here needs to create the json and store it in .kaggle/
+  - name: send tests
     shell: bash
     env:
       REPO_NAME: ${{ inputs.repository_name }}
@@ -41,12 +36,16 @@ runs:
       KAGGLE_API_KEY: ${{ inputs.kaggle_api_key }}
       TEST_FOLDER: ${{ inputs.test_folder }}
     run: |
-      env
-      echo ${TEST_FOLDER}
-      echo ${REPO_NAME}
       git clone https://${GIT_ACCESS_TOKEN}@github.com/${REPO_NAME}.git
       export REPO="$(cut -d'/' -f2 <<<"$REPO_NAME")"
       cd $REPO
+      ls
+      python --version
+      
+  - name: check job status
+    shell: bash
+      run: |
+        echo "test"
     #ls
       
     # authenticate kaggle cli
