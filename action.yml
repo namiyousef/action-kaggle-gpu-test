@@ -26,13 +26,14 @@ outputs:
 runs:
   using: "ubuntu-latest"
   steps:
-    - name: authenticate-kaggle-cli
-      run:  |
-        echo $GIT_ACCESS_TOKEN
-        echo $KAGGLE_API_KEY
-        echo $REPO_URL
-        echo $REPO_NAME
-        echo $TEST_FOLDER
+  - uses: actions/checkout@v3
+  - name: authenticate-kaggle-cli
+    run:  |
+      echo $GIT_ACCESS_TOKEN
+      echo $KAGGLE_API_KEY
+      echo $REPO_URL
+      echo $REPO_NAME
+      echo $TEST_FOLDER
         
     # authenticate kaggle cli
   #send-job:
