@@ -18,11 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: nrkno/yaml-schema-validator-github-action@v4
+      - uses: nwisbeta/validate-yaml-schema@v1.0.3
         with:
-          target: action.yml
-          # Uncomment to disable strict checks
-        # no-strict: true
+          yamlSchemasJson: |
+            {
+                "https://json.schemastore.org/github-action.json": ["action.yml"],
+            }
   pre-release:
     
     runs-on: ubuntu-latest
