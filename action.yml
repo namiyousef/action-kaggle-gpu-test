@@ -24,9 +24,8 @@ outputs:
   upload_url:
     description: "The URL for uploading additional assets to the release"
 runs:
-  using: "ubuntu-latest"
+  using: "composite"
   steps:
-  - uses: actions/checkout@v3
   - name: authenticate-kaggle-cli
     shell: bash
     run:  |
