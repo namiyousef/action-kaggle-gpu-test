@@ -25,8 +25,18 @@ runs:
   steps:
   - name: authenticate-kaggle-cli
     shell: bash
+    env:
+      KAGGLE_API_KEY: ${{ inputs.kaggle_api_key }}
     run: |
-      echo "test"
+      python -m pip install kaggle
+      python
+      import json, os
+      kaggle_api_key = os.environ.get("KAGGLE_API_KEY")
+      kaggle_json = json.loads(kaggle_api_key)
+      with open('~/.kaggle/kaggle.json', 'w') as f:
+        json.dump(kaggle_json, f)
+      quit()
+      kaggle competitions list
     # todo here needs to create the json and store it in .kaggle/
   - name: send tests
     shell: bash
