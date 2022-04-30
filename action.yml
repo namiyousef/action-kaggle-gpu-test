@@ -36,12 +36,13 @@ runs:
   - name: test clone repo
     shell: bash
     run: |
-      echo ${test_folder}
-      echo ${repository_name}
-      git clone https://${git_access_token}@github.com/namiyousef/colab-utils.git
-      export repo_name="$(cut -d'/' -f2 <<<"$repository_name")"
-      cd $repo_name
-      ls
+      env
+    #echo ${test_folder}
+    #echo ${repository_name}
+    #git clone https://${git_access_token}@github.com/namiyousef/colab-utils.git
+    #export repo_name="$(cut -d'/' -f2 <<<"$repository_name")"
+    #cd $repo_name
+    #ls
       
     # authenticate kaggle cli
   #send-job:
