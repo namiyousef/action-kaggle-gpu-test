@@ -36,16 +36,18 @@ runs:
       with open('.kaggle/kaggle.json', 'w') as f:
         json.dump(kaggle_json, f)
       "
-      kaggle competitions list
+
     # todo here needs to create the json and store it in .kaggle/
   - name: send tests
     shell: bash
     env:
       REPO_NAME: ${{ inputs.repository_name }}
       GIT_ACCESS_TOKEN: ${{ inputs.git_access_token }}
-      KAGGLE_API_KEY: ${{ inputs.kaggle_api_key }}
       TEST_FOLDER: ${{ inputs.test_folder }}
     run: |
+      kaggle kernels init
+      python utils/prepare_job.py
+      kaggle kernels push
       git clone https://${GIT_ACCESS_TOKEN}@github.com/${REPO_NAME}.git
       export REPO="$(cut -d'/' -f2 <<<"$REPO_NAME")"
       cd $REPO
