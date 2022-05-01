@@ -24,8 +24,6 @@ runs:
   using: "composite"
   
   steps:
-  - uses: actions/checkout@v2
-
   - name: authenticate-kaggle-cli
     shell: bash
     env:
@@ -50,8 +48,7 @@ runs:
     run: |
       ls
       kaggle kernels init
-      
-      python utils/prepare_job.py
+      python ${{ github.action_path }}/utils/prepare_job.py
       kaggle kernels push
       git clone https://${GIT_ACCESS_TOKEN}@github.com/${REPO_NAME}.git
       export REPO="$(cut -d'/' -f2 <<<"$REPO_NAME")"
