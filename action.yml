@@ -48,7 +48,8 @@ runs:
     run: |
       ls
       kaggle kernels init
-      python ${{ github.action_path }}/utils/prepare_job.py
+      cd ${{ github.action_path }}
+      python utils/prepare_job.py
       kaggle kernels push
       git clone https://${GIT_ACCESS_TOKEN}@github.com/${REPO_NAME}.git
       export REPO="$(cut -d'/' -f2 <<<"$REPO_NAME")"
