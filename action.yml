@@ -53,6 +53,8 @@ runs:
       
   - name: check job status
     shell: bash
+    env:
+      REPO_NAME: ${{ inputs.repository_name }}
     run: |
       cd ${{ github.action_path }}
       python utils/worker.py
