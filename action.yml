@@ -48,7 +48,7 @@ runs:
     run: |
       echo "hello"
       ls
-      kaggle kernels init
+      kaggle kernels init -p ${{ github.action_path }}
       cd ${{ github.action_path }}
       python utils/prepare_job.py
       kaggle kernels push
