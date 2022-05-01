@@ -10,8 +10,8 @@ JOB_FILE_NAME = 'job.py'
 # need to think of a better way of doing this... you are showing the key within Kaggle this way. Maybe better to push a dataset of the tests?
 JOB_LINES = [
   f'!git clone https:{GIT_ACCESS_TOKEN}@github.com/{GIT_USERNAME}/{GIT_REPO_NAME}',
-  'pip install .',
-  f'pytest tests/{TEST_FOLDER}'
+  '!pip install .',
+  f'!pytest tests/{TEST_FOLDER}'
 ]
 
 def prepare_metadata_file():
@@ -31,7 +31,7 @@ def prepare_metadata_file():
 
 def prepare_job_file():
   with open(JOB_FILE_NAME, 'w') as f:
-    f.writelines(JOB_LINES)
+    f.write('\n'.join(JOB_LINES))
 
 
 def main():
