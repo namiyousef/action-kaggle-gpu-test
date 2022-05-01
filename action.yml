@@ -46,23 +46,17 @@ runs:
       GIT_ACCESS_TOKEN: ${{ inputs.git_access_token }}
       TEST_FOLDER: ${{ inputs.test_folder }}
     run: |
-      echo "hello"
       kaggle kernels init -p ${{ github.action_path }}
       cd ${{ github.action_path }}
-      pwd
-      ls
       python utils/prepare_job.py
       kaggle kernels push
-      git clone https://${GIT_ACCESS_TOKEN}@github.com/${REPO_NAME}.git
-      export REPO="$(cut -d'/' -f2 <<<"$REPO_NAME")"
-      cd $REPO
-      ls
-      python --version
       
   - name: check job status
     shell: bash
     run: |
-      echo "test"
+      cd ${{ github.action_path }}
+      python utils/worker.py
+      
     #ls
       
     # authenticate kaggle cli
