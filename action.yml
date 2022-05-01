@@ -46,6 +46,7 @@ runs:
       GIT_ACCESS_TOKEN: ${{ inputs.git_access_token }}
       TEST_FOLDER: ${{ inputs.test_folder }}
     run: |
+      echo "hello"
       ls
       kaggle kernels init
       cd ${{ github.action_path }}
