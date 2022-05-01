@@ -22,7 +22,10 @@ outputs:
     description: "The URL for uploading additional assets to the release"
 runs:
   using: "composite"
+  
   steps:
+  - uses: actions/checkout@v2
+
   - name: authenticate-kaggle-cli
     shell: bash
     env:
@@ -39,8 +42,6 @@ runs:
 
     # todo here needs to create the json and store it in .kaggle/
   - name: send tests
-    
-    uses: actions/checkout@v2
     shell: bash
     env:
       REPO_NAME: ${{ inputs.repository_name }}
