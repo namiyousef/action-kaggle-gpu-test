@@ -16,7 +16,7 @@ JOB_LINES = [
 
 def prepare_metadata_file():
   
-  with open('kaggle-metadata.json', 'r') as f:
+  with open('kernel-metadata.json', 'r') as f:
     metadata_file = json.load(f)
     
   metadata_file['id'] = '/'.join([metadata_file['id'].split('/')[0], GIT_REPO_NAME])
@@ -26,7 +26,7 @@ def prepare_metadata_file():
   metadata_file['kernel_type'] = 'script'
   metadata_file['enable_gpu'] = True
   
-  with open('kaggle-metadata.json', 'w') as f:
+  with open('kernel-metadata.json', 'w') as f:
     json.dump(metadata_file, f)
 
 def prepare_job_file():
