@@ -17,7 +17,8 @@ JOB_LINES = [
   f'os.system("git clone https://{GIT_ACCESS_TOKEN}@github.com/{GIT_USERNAME}/{GIT_REPO_NAME}")',
   f'os.chdir("{GIT_REPO_NAME}")',
   'os.system("pip install .")',
-  f'output = subprocess.check_output(["pytest", f"{TEST_FOLDER}"])'
+  f'try: output = subprocess.check_output(["pytest", f"{TEST_FOLDER}"])',
+  'except Exception as e: print(output.decode("utf-8")); raise e
 ]
 
 def prepare_metadata_file():
