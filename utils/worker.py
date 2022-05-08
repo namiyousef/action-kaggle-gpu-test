@@ -1,7 +1,7 @@
 import os
 import time
 import subprocess
-from utils
+from utils import parser
 
 SLEEP_TIME = 5
 GIT_REPO_NAME = os.environ.get('REPO_NAME').split('/')[-1]
