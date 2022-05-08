@@ -7,3 +7,5 @@ def parse_kaggle_output(filename):
         for line in json_output:
 
             output_str += line.get('data')
+    
+    return output_str
