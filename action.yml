@@ -37,6 +37,7 @@ runs:
       with open('.kaggle/kaggle.json', 'w') as f:
         json.dump(kaggle_json, f)
       "
+      chmod 600 /home/runner/.kaggle/kaggle.json
 
     # todo here needs to create the json and store it in .kaggle/
   - name: send tests
