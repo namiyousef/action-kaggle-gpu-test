@@ -11,13 +11,13 @@ def main():
     
     output = subprocess.check_output(['kaggle', 'kernels', 'status', GIT_REPO_NAME])
     output = output.decode("utf-8")
+    print(output)
     if 'error' in output:
-      print('FAIL: Test(s) failed. Full logs below:')
       # download outputs in log file
-      output = subprocess.check_output(['kaggle', 'kernels', 'output'])
-      parse_kaggle_output(GIT_REPO_NAME)
-      break
-    elif 'success':
+      output = subprocess.check_output(['kaggle', 'kernels', 'output', GIT_REPO_NAME, '-p', GIT_REPO_NAME])
+      parse_kaggle_output(os.path.join(GIT_REPO_NAME, GIT_REPO_NAME))
+      raise Exception('FAIL: Test(s) failed. Full logs above')
+    elif 'success' in output:
       print('SUCCESS: Kaggle Integration Tests')
       break
     else:
