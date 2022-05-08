@@ -11,7 +11,6 @@ def main():
     
     output = subprocess.check_output(['kaggle', 'kernels', 'status', GIT_REPO_NAME])
     output = output.decode("utf-8")
-    print(output)
     if 'error' in output:
       print('FAIL: Test(s) failed. Full logs below:')
       # download outputs in log file
