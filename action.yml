@@ -26,18 +26,20 @@ outputs:
 runs:
 
   using: "composite"
-  strategy:
-    fail-fast: false
-    matrix:
-      python-version: ["$ {{ inputs.python_version }}"]
   steps:
+  - name: testing
+    shell: bash
+    env:
+      TEST: $ {{ inputs.python_version }}
+    run: |
+      echo $TEST
+     
 
-
-  - uses: actions/checkout@v3
-  - name: Set up Python ${{ matrix.python-version }}
-    uses: actions/setup-python@v3
-    with:
-      python-version: ${{ matrix.python-version }}
+  # - uses: actions/checkout@v3
+  # - name: Set up Python ${{ matrix.python-version }}
+  #  uses: actions/setup-python@v3
+  #  with:
+  #    python-version: ${{ matrix.python-version }}
       
   - name: authenticate-kaggle-cli
     shell: bash
