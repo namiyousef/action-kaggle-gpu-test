@@ -15,6 +15,9 @@ inputs:
      description: "Folder to run pytest on"
      required: true
      default: "integration/"
+  python_version:
+     description: "version of python to run the test on"
+     required: true
 outputs:
   automatic_releases_tag:
     description: "The release tag this action just processed"
@@ -28,6 +31,8 @@ runs:
     shell: bash
     env:
       KAGGLE_API_KEY: ${{ inputs.kaggle_api_key }}
+    with:
+      python-version: $ {{ inputs.python_version }}
     run: |
       cd ~
       mkdir .kaggle
