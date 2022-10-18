@@ -15,7 +15,7 @@ inputs:
      description: "Folder to run pytest on"
      required: true
      default: "integration/"
-  pythonversion:
+  python_version:
      description: "version of python to use"
      required: true
      default: "3.10"
@@ -29,10 +29,10 @@ runs:
   using: "composite"
   steps:
   - uses: actions/checkout@v3
-  - name: Set up Python ${{ inputs.pythonversion }}
+  - name: Set up Python ${{ inputs.python_version }}
     uses: actions/setup-python@v3
     with:
-      python-version: ${{ inputs.pythonversion }}
+      python-version: ${{ inputs.python_version }}
   - name: authenticate-kaggle-cli
     shell: bash
     env:
