@@ -24,15 +24,19 @@ outputs:
   upload_url:
     description: "The URL for uploading additional assets to the release"
 runs:
+
   using: "composite"
   
   steps:
+  - uses: actions/checkout@v3
+      - name: Set up Python ${{ inputs.python_version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ inputs.python_version }}
   - name: authenticate-kaggle-cli
     shell: bash
     env:
       KAGGLE_API_KEY: ${{ inputs.kaggle_api_key }}
-    with:
-      python-version: $ {{ inputs.python_version }}
     run: |
       cd ~
       mkdir .kaggle
