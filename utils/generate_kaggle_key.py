@@ -30,3 +30,6 @@ try:
         json.dump(kaggle_json, f)
 except Exception as e:
     raise Exception('Could not write API key to file')
+    
+if __name__ == '__main__':
+  main()
