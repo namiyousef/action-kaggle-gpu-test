@@ -38,12 +38,12 @@ runs:
     env:
       KAGGLE_API_KEY: ${{ inputs.kaggle_api_key }}
     run: |
-      export CWD=$(pwd)
+      export ACTIONS_PATH=${{ github.action_path }}
       cd ~
       python -c "import sys; print(sys.version)"
       mkdir .kaggle
       python -m pip install --upgrade kaggle --user
-      python $CWD/utils/generate_kaggle_key.py
+      python $ACTIONS_PATH/utils/generate_kaggle_key.py
       chmod 600 /home/runner/.kaggle/kaggle.json
 
     # todo here needs to create the json and store it in .kaggle/
