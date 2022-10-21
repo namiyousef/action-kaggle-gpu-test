@@ -38,7 +38,7 @@ runs:
     env:
       KAGGLE_API_KEY: ${{ inputs.kaggle_api_key }}
     run: |
-      export CWD=pwd
+      export CWD=$(pwd)
       cd ~
       python -c "import sys; print(sys.version)"
       mkdir .kaggle
