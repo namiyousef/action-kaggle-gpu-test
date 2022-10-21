@@ -42,11 +42,7 @@ runs:
       python -c "import sys; print(sys.version)"
       mkdir .kaggle
       python -m pip install --upgrade kaggle --user
-      python -c "import json, os; kaggle_api_key = os.environ.get('KAGGLE_API_KEY'); kaggle_json = json.loads(kaggle_api_key);\
-      
-      with open('.kaggle/kaggle.json', 'w') as f:
-        json.dump(kaggle_json, f)
-      "
+      python utils/generate_kaggle_key.py
       chmod 600 /home/runner/.kaggle/kaggle.json
 
     # todo here needs to create the json and store it in .kaggle/
